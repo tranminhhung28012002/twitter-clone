@@ -1,0 +1,54 @@
+{
+    "trending": [
+      {
+        "id": 1,
+        "title": "Trending in Vietnam",
+        "hashtag": "#Vietnam",
+        "postCount": "26k posts"
+      },
+      {
+        "id": 2,
+        "title": "Technology · Trending",
+        "hashtag": "#AI",
+        "postCount": "100k posts"
+      },
+      {
+        "id": 3,
+        "title": "Politics · Trending",
+        "hashtag": "#Election2024",
+        "postCount": "50k posts"
+      },
+      {
+        "id": 4,
+        "title": "Sports · Trending",
+        "hashtag": "#WorldCup",
+        "postCount": "75k posts"
+      },
+      {
+        "id": 5,
+        "title": "Entertainment · Trending",
+        "hashtag": "#Oscars",
+        "postCount": "50k posts"
+      }
+    ],
+    "users-to-follow": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "username": "@johndoe",
+        "avatar": "https://example.com/avatar1.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Jane Smith",
+        "username": "@janesmith",
+        "avatar": "https://example.com/avatar2.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Bob Johnson",
+        "username": "@bobjohnson",
+        "avatar": "https://example.com/avatar3.jpg"
+      }
+    ]
+  }

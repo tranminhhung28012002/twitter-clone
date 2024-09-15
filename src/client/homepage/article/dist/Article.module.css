@@ -1,0 +1,117 @@
+.block__userEmail, .block__name {
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.block {
+  width: 581px;
+  background-color: inherit;
+  min-height: 100px;
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 16px;
+  border-bottom: 1px solid #222222;
+}
+.block__Image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 8px;
+}
+.block__post {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.block__Video {
+  width: 100%;
+  height: 519px;
+  display: block;
+  margin-bottom: 8px;
+}
+.block__Status {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  margin-top: 6px;
+  margin-bottom: 13px;
+  font-weight: bold;
+  color: #fff;
+  font-weight: 500;
+  max-width: 517px;
+}
+.block__article {
+  width: 100%;
+}
+.block__Content {
+  display: flex;
+  font-size: 14px;
+  line-height: 20px;
+  color: #666;
+  margin-top: 14px;
+  align-items: center;
+}
+.block__Content li {
+  position: relative;
+  cursor: pointer;
+  width: 113px;
+  align-items: center;
+  display: flex;
+  gap: 4px;
+}
+.block__Content li:hover::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 7%;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.block__Content_reply:hover::before {
+  background: rgba(0, 153, 255, 0.329);
+}
+.block__Content_reply:hover {
+  filter: brightness(0) saturate(100%) invert(47%) sepia(99%) saturate(1345%) hue-rotate(178deg) brightness(95%) contrast(98%);
+}
+.block__Content_undo:hover::before {
+  background: rgba(0, 186, 124, 0.329);
+}
+.block__Content_undo:hover {
+  filter: brightness(0) saturate(100%) invert(52%) sepia(35%) saturate(2402%) hue-rotate(123deg) brightness(91%) contrast(102%);
+}
+.block__Content_like:hover::before {
+  background: rgba(249, 24, 129, 0.329);
+}
+.block__Content_like:hover {
+  filter: brightness(0) saturate(100%) invert(45%) sepia(99%) saturate(7122%) hue-rotate(320deg) brightness(99%) contrast(98%);
+}
+.block__Content_view:hover::before {
+  background: rgba(0, 153, 255, 0.329);
+}
+.block__Content_view:hover {
+  filter: brightness(0) saturate(100%) invert(47%) sepia(99%) saturate(1345%) hue-rotate(178deg) brightness(95%) contrast(98%);
+}
+.block__avatar {
+  width: 40px;
+  height: 40px;
+}
+.block__info {
+  gap: 4px;
+  display: flex;
+}
+.block__name {
+  color: #fff;
+  font-weight: 700;
+}
+.block__userEmail {
+  color: #71767b;
+  font-weight: 500;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}

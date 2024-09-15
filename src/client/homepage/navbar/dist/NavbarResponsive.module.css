@@ -1,0 +1,5 @@
+@media (min-width: 1280px) {
+  .navbar__item {
+    margin-bottom: 0px;
+  }
+}

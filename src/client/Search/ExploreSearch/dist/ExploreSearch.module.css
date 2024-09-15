@@ -1,0 +1,15 @@
+.exploreSearch {
+  margin-bottom: 20px;
+}
+.exploreSearch__input {
+  background-color: #222222;
+  max-width: 502px;
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 30px;
+  font-size: 15px;
+  line-height: 20px;
+  outline: none;
+  border: none;
+  color: #fff;
+}

@@ -1,0 +1,10 @@
+.exploreSearch {
+  margin-bottom: 20px;
+}
+.exploreSearch__input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+}

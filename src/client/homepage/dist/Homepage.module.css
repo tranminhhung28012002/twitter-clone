@@ -1,0 +1,176 @@
+@charset "UTF-8";
+textarea {
+  resize: none !important;
+}
+
+.HomepageContainer {
+  width: 1260px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Homepage {
+  position: relative;
+  width: 613px;
+  outline: 1px solid #222222;
+  height: 100%;
+}
+.Homepage__header {
+  width: 100%;
+  cursor: pointer;
+  position: sticky;
+  top: 0px;
+  display: flex;
+  border-bottom: 1px solid #222222;
+  color: #71767b;
+  font-weight: 500;
+  z-index: 99;
+  backdrop-filter: blur(10px);
+}
+.Homepage__act1, .Homepage__act2 {
+  width: 100%;
+  height: 37px;
+  padding: 16px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Homepage__act1.active, .Homepage__act2.active {
+  color: #fff;
+  font-weight: 700;
+  position: relative;
+}
+.Homepage__act1.active::after, .Homepage__act2.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 3px;
+  background-color: #1DA1F2;
+}
+.Homepage__act1:hover, .Homepage__act2:hover {
+  background-color: #2e2e2e;
+}
+.Homepage__content {
+  border-bottom: 1px solid #222222;
+}
+.Homepage__title {
+  font-size: 15px;
+  line-height: 20px;
+}
+.Homepage__post {
+  display: flex;
+  margin: 4px 16px;
+}
+.Homepage__postbtn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.Homepage__every {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 9999px;
+  padding: 0 12px;
+  width: 182px;
+  min-width: 24px;
+  min-height: 24px;
+  color: #1DA1F2;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: start;
+}
+.Homepage__every:hover {
+  background: #0398f533;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+.Homepage__every__icon {
+  width: 10px;
+  height: 10px;
+}
+.Homepage__avatar {
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+}
+.Homepage__toolbar {
+  margin-top: 14px;
+  border-top: 1px solid #222222;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.Homepage__list {
+  margin-top: 11px;
+  display: flex;
+}
+.Homepage__list li {
+  padding: 9px;
+  cursor: pointer;
+  filter: brightness(0) saturate(100%) invert(59%) sepia(46%) saturate(4697%) hue-rotate(176deg) brightness(98%) contrast(93%);
+}
+.Homepage__list li:hover {
+  background: #0398f533;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  border-radius: 9999px;
+}
+.Homepage__item {
+  width: 18px;
+  height: 18px;
+}
+.Homepage__btn {
+  cursor: pointer;
+  margin-top: 11px;
+  background: #1DA1F2;
+  color: #fff;
+  font-weight: 700;
+  padding: 0px 17px;
+  font-size: 15px;
+  line-height: 20px;
+  border-radius: 9999px;
+  height: 36px;
+}
+.Homepage__postForm {
+  display: flex;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: black;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 101;
+  /* Hiển thị trên Overlay */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 500px;
+}
+.Homepage .show {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(126, 126, 126, 0.5);
+  /* Màu nền đen với độ trong suốt */
+  z-index: 100;
+  overflow-y: none;
+}
+.Homepage__postClose {
+  position: absolute;
+  font-size: 15px;
+  color: #fff;
+}
+.Homepage__postInfo {
+  margin-top: 27px;
+  display: flex;
+  margin-bottom: 76px;
+}
