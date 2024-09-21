@@ -5,6 +5,7 @@ interface SearchFilterProps{
 }
 export default function ExploreFilter({onFilterChange,selectedFilter} :SearchFilterProps){
 
+    // phần bộ lọc Search
     return (
         <div className={styles.searchFilters}>
             <h3 className={styles.searchFilters__heading}>Search filters</h3>
