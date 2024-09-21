@@ -16,12 +16,15 @@ interface SlidebarProps {
   }
 
 export default function Slidebar({currentPage}:SlidebarProps){    
+
+    //phần chỉnh sửa sliderbar cần hiện những gì ở các trang khác
     const location = useLocation();
     const isExplorePage = location.pathname === '/' || currentPage === 'Explore';
     const isPrenium = location.pathname === '/' || currentPage === 'homepage';
     
     return (
         <div className={styles.Slidebar}> 
+         {/* gọi hàm để hiện hay không hiện ở đây */}
             {!isExplorePage && (
                 <>
             <div className={styles.Slidebar__Search}>
