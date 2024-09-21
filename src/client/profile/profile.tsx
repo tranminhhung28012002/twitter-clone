@@ -124,7 +124,6 @@ export default function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const [editedProfile, setEditedProfile] = useState(profile);
   const [activeTab, setActiveTab] = useState('posts');
-  const { username } = useParams<{ username: string }>();
   const navigate = useNavigate();
 
   const handleInputChange = (field: keyof UserProfile, value: string) => {
@@ -164,54 +163,54 @@ export default function Profile() {
 
         {isEditing ? (
             <div className={styles.show}>
-                 <div className={styles.editProfile}>
-            <div className={styles.editHeader}>
-              <FaTimes onClick={() => setIsEditing(false)} className={styles.closeIcon} />
-              <div>
-                <h2>Edit profile</h2>
-              <button onClick={handleSave} className={styles.saveButton}>Save</button>
+              <div className={styles.editProfile}>
+                  <div className={styles.editHeader}>
+                    <FaTimes onClick={() => setIsEditing(false)} className={styles.closeIcon} />
+                    <div>
+                      <h2>Edit profile</h2>
+                    <button onClick={handleSave} className={styles.saveButton}>Save</button>
+                    </div>
+                  </div>
+                  <div className={styles.editBanner}>
+                    <img src={editedProfile.bannerUrl} className={styles.editBanner__Img} />
+                    <label className={styles.editBannerButton}>
+                      <FaCamera />
+                      <input type="file" accept="image/*" onChange={(e) => handleFileChange(e, 'banner')} />
+                    </label>
+                  </div>
+                  <div className={styles.editAvatar}>
+                    <img src={editedProfile.avatarUrl} alt="Avatar" />
+                    <label className={styles.editAvatarButton}>
+                      <FaCamera />
+                      <input type="file" accept="image/*" onChange={(e) => handleFileChange(e, 'avatar')} />
+                    </label>
+                  </div>
+                  <div className={styles.editForm}>
+                    <input
+                      type="text"
+                      value={editedProfile.name}
+                      onChange={(e) => handleInputChange('name', e.target.value)}
+                      placeholder="Name"
+                    />
+                    <textarea
+                      value={editedProfile.bio}
+                      onChange={(e) => handleInputChange('bio', e.target.value)}
+                      placeholder="Bio"
+                    />
+                    <input
+                      type="text"
+                      value={editedProfile.location}
+                      onChange={(e) => handleInputChange('location', e.target.value)}
+                      placeholder="Location"
+                    />
+                    <input
+                      type="text"
+                      value={editedProfile.website}
+                      onChange={(e) => handleInputChange('website', e.target.value)}
+                      placeholder="Website"
+                    />
+                  </div>
               </div>
-            </div>
-            <div className={styles.editBanner}>
-              <img src={editedProfile.bannerUrl} className={styles.editBanner__Img} />
-              <label className={styles.editBannerButton}>
-                <FaCamera />
-                <input type="file" accept="image/*" onChange={(e) => handleFileChange(e, 'banner')} />
-              </label>
-            </div>
-            <div className={styles.editAvatar}>
-              <img src={editedProfile.avatarUrl} alt="Avatar" />
-              <label className={styles.editAvatarButton}>
-                <FaCamera />
-                <input type="file" accept="image/*" onChange={(e) => handleFileChange(e, 'avatar')} />
-              </label>
-            </div>
-            <div className={styles.editForm}>
-              <input
-                type="text"
-                value={editedProfile.name}
-                onChange={(e) => handleInputChange('name', e.target.value)}
-                placeholder="Name"
-              />
-              <textarea
-                value={editedProfile.bio}
-                onChange={(e) => handleInputChange('bio', e.target.value)}
-                placeholder="Bio"
-              />
-              <input
-                type="text"
-                value={editedProfile.location}
-                onChange={(e) => handleInputChange('location', e.target.value)}
-                placeholder="Location"
-              />
-              <input
-                type="text"
-                value={editedProfile.website}
-                onChange={(e) => handleInputChange('website', e.target.value)}
-                placeholder="Website"
-              />
-            </div>
-          </div>
             </div>
         ) : (
           <>

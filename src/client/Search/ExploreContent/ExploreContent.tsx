@@ -4,7 +4,9 @@ import { fetchTweets } from '../../../utils/http';
 
 interface ExploreContentProps {
     searchQuery: string;
-    tweets:Tweet[];
+    tweets: Tweet[];
+    loading: boolean;
+    selectedFilter: string;
 }
 
 interface Tweet {
@@ -14,7 +16,7 @@ interface Tweet {
     created_at: string;
 }
 
-export default function ExploreContent({ searchQuery }: ExploreContentProps) {
+export default function ExploreContent({ searchQuery, selectedFilter }: ExploreContentProps) {
     const [tweets, setTweets] = useState<Tweet[]>([]);
     const [loading, setLoading] = useState(false);
 
@@ -27,7 +29,6 @@ export default function ExploreContent({ searchQuery }: ExploreContentProps) {
 
             setLoading(true);
             try {
-                // Gọi API để tìm kiếm tweet dựa trên searchQuery
                 const fetchedTweets = await fetchTweets(searchQuery);
                 setTweets(fetchedTweets);
             } catch (error) {
@@ -40,15 +41,20 @@ export default function ExploreContent({ searchQuery }: ExploreContentProps) {
 
         getTweets();
     }, [searchQuery]);
+    const filteredTweets = tweets.filter(tweet => {
+        if (selectedFilter === 'peopleYouFollow') {
+            return tweet.author_id === 'your_followed_user_id'; 
+        }
+        return true;
+    });
 
     return (
         <div className={styles.exploreContent}>
-            <h1 className={styles.exploreContent__title}>Kết quả tìm kiếm cho "{searchQuery}"</h1>
             {loading ? (
                 <p>Đang tải...</p>
-            ) : tweets.length > 0 ? (
+            ) : filteredTweets.length > 0 ? (
                 <div className={styles.exploreContent__results}>
-                    {tweets.map((tweet) => (
+                    {filteredTweets.map((tweet) => (
                         <div key={tweet.id} className={styles.exploreContent__tweet}>
                             <p>{tweet.text}</p>
                             <small>Author ID: {tweet.author_id}, Created at: {tweet.created_at}</small>
@@ -56,7 +62,7 @@ export default function ExploreContent({ searchQuery }: ExploreContentProps) {
                     ))}
                 </div>
             ) : (
-                <p>Không tìm thấy tweet nào cho "{searchQuery}"</p>
+                <p className={styles.exploreContent__err}>No results for "{searchQuery}"</p>
             )}
         </div>
     );

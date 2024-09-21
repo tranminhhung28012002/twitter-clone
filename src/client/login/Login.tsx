@@ -50,41 +50,6 @@ export default function LoginComponent() {
             setLoginError('Email hoặc mật khẩu không chính xác.');
         }
     };
-    // const handleLogin = async (data: LoginFormInputs) => {
-    //     try {
-    //         const response = await axios.post('/login.json', {
-    //             email: data.email,
-    //             password: data.password
-    //         });
-                     
-    //         if (response.data.success) {
-    //             toast.success('Đăng nhập thành công!');
-    //             navigate('/homepage');
-    //         } else {
-    //             setLoginError('Email hoặc mật khẩu không chính xác.');
-    //         }
-    //     } catch (error) {
-    //         if (error instanceof AxiosError) {
-    //             if (error.response) {
-    //                 // Lỗi từ server
-    //                 setLoginError(error.response.data.message || 'Email hoặc mật khẩu không chính xác.');
-    //             } else if (error.request) {
-    //                 // Lỗi không nhận được response
-    //                 setLoginError('Không thể kết nối đến server. Vui lòng thử lại sau.');
-    //             } else {
-    //                 // Lỗi khác
-    //                 setLoginError('Có lỗi xảy ra. Vui lòng thử lại sau.');
-    //             }
-    //         } else {
-    //             setLoginError('Có lỗi xảy ra. Vui lòng thử lại sau.');
-    //         }
-    //         console.error('Lỗi đăng nhập:', error);
-    //     }
-    // };
-    // const handleInputChange = () => {
-    //     setLoginError(null);
-    //     clearErrors();
-    // };
 
     return (
         <>
@@ -137,7 +102,6 @@ export default function LoginComponent() {
                             <img src={twitter} className={styles.twittercreate__icon} alt="" />
                             <span></span>
                         </div>
-
                         {step === 1 && (
                             <form onSubmit={handleSubmit(handleNext)}>
                                 <h2 className={styles.twitterlogin__desc}>Đăng nhập vào X</h2>

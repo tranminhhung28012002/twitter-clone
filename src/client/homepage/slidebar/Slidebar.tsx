@@ -17,16 +17,65 @@ interface SlidebarProps {
 
 export default function Slidebar({currentPage}:SlidebarProps){    
     const location = useLocation();
-    const isExplorePage = location.pathname === '/Search' || currentPage === 'Search';
+    const isExplorePage = location.pathname === '/' || currentPage === 'Explore';
     const isPrenium = location.pathname === '/' || currentPage === 'homepage';
-    const isTrending = location.pathname === '/Search' || currentPage === 'Search';
+    
     return (
         <div className={styles.Slidebar}> 
             {!isExplorePage && (
+                <>
             <div className={styles.Slidebar__Search}>
                 <img className={styles.Slidebar__iconSearch} src={search} alt="" />
                 <input className={styles.Slidebar__Searchcmt} type="text" placeholder='Search' />
             </div>
+            <div className={`${styles.Slidebar__Trending} ${styles.Slidebar__block}`}>
+            <h2 className={styles.Slidebar__title}>Trends for you</h2>
+            <div className={styles.Slidebar__item}>
+                <div>
+                    <p className={styles.Slidebar__titlehastag}>Trending in VietNam</p>
+                    <h6 className={styles.Slidebar__hastag}>#Test</h6>
+                    <span className={styles.Slidebar__rate}>26k post</span>
+                </div>
+                <a href="#" className={styles.Slidebar__more}>...</a>
+            </div>
+            <div className={styles.Slidebar__item}>
+                <div>
+                    <p className={styles.Slidebar__titlehastag}>Trending in VietNam</p>
+                    <h6 className={styles.Slidebar__hastag}>#Test</h6>
+                    <span className={styles.Slidebar__rate}>26k post</span>
+                </div>
+                <a href="#" className={styles.Slidebar__more}>...</a>
+            </div>
+            <div className={styles.Slidebar__item}>
+                <div>
+                    <p className={styles.Slidebar__titlehastag}>Trending in VietNam</p>
+                    <h6 className={styles.Slidebar__hastag}>#Test</h6>
+                    <span className={styles.Slidebar__rate}>26k post</span>
+                </div>
+                <a href="#" className={styles.Slidebar__more}>...</a>
+            </div>
+            <div className={styles.Slidebar__item}>
+                <div>
+                    <p className={styles.Slidebar__titlehastag}>Trending in VietNam</p>
+                    <h6 className={styles.Slidebar__hastag}>#Test</h6>
+                    <span className={styles.Slidebar__rate}>26k post</span>
+                </div>
+                <a href="#" className={styles.Slidebar__more}>...</a>
+            </div>
+            <div className={styles.Slidebar__item}>
+                <div>
+                    {/* đổ dữ liệu lại thành {title_hastag} trong data */}
+                    <p className={styles.Slidebar__titlehastag}>Trending in VietNam</p>
+                    {/* đổ dữ liệu lại thành {hastag} trong data */}
+                    <h6 className={styles.Slidebar__hastag}>#Test</h6>
+                       {/* đổ dữ liệu lại thành {comment,rate} trong data */}
+                    <span className={styles.Slidebar__rate}>26k post</span>
+                </div>
+                <a href="#" className={styles.Slidebar__more}>...</a>
+            </div>
+            <a href="#" className={styles.Slidebar__Show}>Show more</a>
+        </div>
+        </>
             )}
             {isPrenium && (    
             <div className={`${styles.Slidebar__Premium} ${styles.Slidebar__block}`}>
@@ -34,56 +83,11 @@ export default function Slidebar({currentPage}:SlidebarProps){
                 <p className={styles.Slidebar__desc}>Subscribe to unlock new features and if eligible, receive a share of ads revenue.</p>
                 <button className={styles.Slidebar__sub}>Subscribe</button>
             </div>
+            
             )} 
-            {!isTrending && (
-            <div className={`${styles.Slidebar__Trending} ${styles.Slidebar__block}`}>
-                <h2 className={styles.Slidebar__title}>Trends for you</h2>
-                <div className={styles.Slidebar__item}>
-                    <div>
-                        <p className={styles.Slidebar__titlehastag}>Trending in VietNam</p>
-                        <h6 className={styles.Slidebar__hastag}>#Test</h6>
-                        <span className={styles.Slidebar__rate}>26k post</span>
-                    </div>
-                    <a href="#" className={styles.Slidebar__more}>...</a>
-                </div>
-                <div className={styles.Slidebar__item}>
-                    <div>
-                        <p className={styles.Slidebar__titlehastag}>Trending in VietNam</p>
-                        <h6 className={styles.Slidebar__hastag}>#Test</h6>
-                        <span className={styles.Slidebar__rate}>26k post</span>
-                    </div>
-                    <a href="#" className={styles.Slidebar__more}>...</a>
-                </div>
-                <div className={styles.Slidebar__item}>
-                    <div>
-                        <p className={styles.Slidebar__titlehastag}>Trending in VietNam</p>
-                        <h6 className={styles.Slidebar__hastag}>#Test</h6>
-                        <span className={styles.Slidebar__rate}>26k post</span>
-                    </div>
-                    <a href="#" className={styles.Slidebar__more}>...</a>
-                </div>
-                <div className={styles.Slidebar__item}>
-                    <div>
-                        <p className={styles.Slidebar__titlehastag}>Trending in VietNam</p>
-                        <h6 className={styles.Slidebar__hastag}>#Test</h6>
-                        <span className={styles.Slidebar__rate}>26k post</span>
-                    </div>
-                    <a href="#" className={styles.Slidebar__more}>...</a>
-                </div>
-                <div className={styles.Slidebar__item}>
-                    <div>
-                        {/* đổ dữ liệu lại thành {title_hastag} trong data */}
-                        <p className={styles.Slidebar__titlehastag}>Trending in VietNam</p>
-                        {/* đổ dữ liệu lại thành {hastag} trong data */}
-                        <h6 className={styles.Slidebar__hastag}>#Test</h6>
-                           {/* đổ dữ liệu lại thành {comment,rate} trong data */}
-                        <span className={styles.Slidebar__rate}>26k post</span>
-                    </div>
-                    <a href="#" className={styles.Slidebar__more}>...</a>
-                </div>
-                <a href="#" className={styles.Slidebar__Show}>Show more</a>
-            </div>
-            )}
+         
+            
+            
              {/* Đổ dữ liệu Follow vào đây */}
             <div className={`${styles.Slidebar__Wfollow} ${styles.Slidebar__block}`}>
                 <h2 className={styles.Slidebar__title}>Who to follow</h2>

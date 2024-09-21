@@ -56,12 +56,10 @@ export default function Register({ showRegister, onClose }: RegisterProps) {
     <div className={`${styles.twitterRegister} ${styles.show}`}>
       <div className={styles.twitterRegister__block}>
       {showToast && <Toast message="Đăng ký thành công!" onClose={handleCloseToast} />}
-        
         {/* Nội dung form */}
         {/* Block create : email,ten,ngaysinh */}
         {step === 1 && (
           <>
-          
            <a className={styles.twitterRegister__close} onClick={onClose}>X</a>
            <img src={twitter} className={styles.twitterRegister__icon} alt="Twitter Icon" />
             <h2 className={`${styles.twitterRegister__heading} ${styles['twitterRegister__heading-mb33']}`}>Tạo tài khoản của bạn</h2>  

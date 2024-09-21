@@ -1,7 +1,7 @@
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import Navbar from '../homepage/navbar';
 import styles from './ProfilePage.module.scss';
-import { FaBellSlash, FaCalendarAlt, FaEnvelope, FaLink, FaMapMarkerAlt, FaRegBell, FaTimes } from 'react-icons/fa';
+import { FaBellSlash, FaCalendarAlt, FaEnvelope, FaLink, FaMapMarkerAlt, FaRegBell } from 'react-icons/fa';
 import { useState } from 'react';
 import avatar from '../homepage/icon/avatar-default.png';
 import { useNavigate } from 'react-router-dom';
@@ -23,7 +23,7 @@ interface UserProfile {
     birthDate: string;
   }
 export default function ProfilePage(){
-    const [profile, setProfile] = useState<UserProfile>({
+    const [profile] = useState<UserProfile>({
         id: '1',
         name: 'pham van tu',
         username: 'phamvantu231293',

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import styles from './TrendingTopics.module.scss';
-import { title } from 'process';
 
 interface TrendingTopicsProps {
     topics: {
@@ -10,14 +9,17 @@ interface TrendingTopicsProps {
 }
 
 export default function TrendingTopics({topics}: TrendingTopicsProps){
-   
     const [activeTab, setActiveTab] = useState('for you');
     useEffect(() => {
-        setActiveTab('for you');
+        if (topics.length > 0) {
+            setActiveTab(topics[0].title.toLowerCase()); 
+        }
     }, [topics]);
+
     if (!topics || topics.length === 0) {
         return null; 
     }
+
     return(
     <div className={styles.trendingTopics}>
         <div className={styles.trendingTopics__list}>
