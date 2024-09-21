@@ -20,10 +20,11 @@ export default function ExploreSearch({ onSearch, searchHistory, setSearchHistor
     const [showHistory, setShowHistory] = useState(false);
     const [setting, setSetting ] = useState(false);
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value);
-
+  
     const handleStep = () =>{
         setStep(prevStep => prevStep + 1)
     }
+    //hàm để tắt setting hoặc bật setting
     const handleSetting = () => {
         if(step === 2 ){
             setStep(1);
@@ -32,26 +33,32 @@ export default function ExploreSearch({ onSearch, searchHistory, setSearchHistor
             setSetting(!setting);
         }
     };
+
+    //hàm lịch sử tìm kiếm
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (query) {
             onSearch(query);
             const updatedHistory = [query, ...searchHistory.filter(item => item !== query)].slice(0, 20);
             setSearchHistory(updatedHistory);
-            
             setQuery(''); 
         }
     };
+
+    // hiện lịch sử tìm kiếm và trở về trang mặc định của search khi đã nhập tìm kiếm
     const handleFocus = () => {
         setIsBack(true); 
         setShowHistory(true); 
     };
+
+    //lịch sử tìm kiếm có để setimeout tụi m sửa lại không timeout nha
     const handleBlur = () => {
         setTimeout(() => {
             setIsBack(false);
             setShowHistory(false); 
          },200);
     };
+    //lịch sử tìm kiếm
     const handleHistoryClick = (item: string) => {
         setQuery(item);
         onSearch(item);
@@ -77,7 +84,9 @@ export default function ExploreSearch({ onSearch, searchHistory, setSearchHistor
                         onBlur={handleBlur}
                     />
                 </form>
+                 {/* Cài đặt để nhập vào tìm kiếm (rõ hơn thì vào twitter test cái cài đặt là hiểu) */}
                 <IoSettingsOutline className={styles.exploreSearch__settingIcon} onClick={handleSetting} />
+                {/* phần lịch sử tìm kiếm */}
                 {showHistory && query === '' && (
                 <ul className={styles.searchHistory}>
                     {searchHistory.map((item, index) => (
@@ -88,6 +97,7 @@ export default function ExploreSearch({ onSearch, searchHistory, setSearchHistor
                 </ul>
             )}
             </div>
+            {/* cài đặt của tìm kiếm và chưa làm địa chỉ khu vực*/}
             {setting && (
                 <div className={styles.show}>
                     <div className={styles.exploreSetting}>
