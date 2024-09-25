@@ -36,7 +36,9 @@ export default function Homepage() {
     const [selectedFileUrl, setSelectedFileUrl] = useState<string | null>(null);
     const [newUserPost, setNewUserPost] = useState<Post | null>(null);
     const [postImage, setPostImage] = useState<string | null>(null);
-    const [userID, setUserID] = useState('1'); // Default to '1' for "Everyone can reply"
+
+
+    const [userID, setUserID] = useState('0'); // Default to '1' for "Everyone can reply"
     const [option, setOption] = useState(false);
     const [replyOption, setReplyOption] = useState('Everyone can reply'); // Default display text
     const handleUserIDChange = (isEveryCanReply: boolean) => {
@@ -90,6 +92,7 @@ export default function Homepage() {
         setSelectedFileUrl(null);
         setPostImage(null);
     };
+    //click chuột ra ngoài sẽ tự out
     useEffect(() => {
         if (option) {
             document.addEventListener("mousedown", handleClickOutside);
@@ -104,7 +107,7 @@ export default function Homepage() {
     const handleSubmitPost = () => {
         if (text || modalText || selectedFile) {
             const newPost: Post = {
-                userID: userID,
+                userID: userID, //ID 0 hoặc 1 ở đây
                 id: Date.now().toString(),
                 status: modalText || text,
                 imageUserName: avatar,
@@ -181,6 +184,7 @@ export default function Homepage() {
                                 </ul>
                                 <button className={styles.Homepage__btn} onClick={handleSubmitPost}>Post</button>
                             </div>
+                            {/* chon 1 hoac 0 o day */}
                             {option &&(
                                 <div ref={OptionRef} className={styles.Homepage__options}>
                                 <p className={styles.Homepage__every__reply} onClick={() => handleUserIDChange(true)}>Everyone can reply</p>
