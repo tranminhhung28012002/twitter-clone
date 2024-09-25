@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './Homepage.module.scss';
 import Navbar from './navbar';
 import Slidebar from './slidebar';
@@ -15,6 +15,7 @@ import Following from './following';
 import ForYouContent from './Foryou';
 import { useLocation } from 'react-router-dom';
 interface Post {
+    userID: string;
     id: string;
     status: string;
     imageUserName: string;
@@ -35,15 +36,32 @@ export default function Homepage() {
     const [selectedFileUrl, setSelectedFileUrl] = useState<string | null>(null);
     const [newUserPost, setNewUserPost] = useState<Post | null>(null);
     const [postImage, setPostImage] = useState<string | null>(null);
-
+    const [userID, setUserID] = useState('1'); // Default to '1' for "Everyone can reply"
+    const [option, setOption] = useState(false);
+    const [replyOption, setReplyOption] = useState('Everyone can reply'); // Default display text
+    const handleUserIDChange = (isEveryCanReply: boolean) => {
+        const optionText = isEveryCanReply ? 'Everyone can reply' : 'Account to follow';
+        setUserID(isEveryCanReply ? '0' : '1'); 
+        setReplyOption(optionText);
+        setOption(false);
+    };
+    
+    const handleOption = () =>{
+        setOption(!option);
+    }
+    const OptionRef = useRef<HTMLDivElement>(null);
+    const handleClickOutside = (event : MouseEvent) => {
+        
+        if(OptionRef.current && !OptionRef.current.contains(event.target as Node)){
+            setOption(false);
+        }
+    };
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setText(event.target.value);
     };
-
     const handleFormChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setModalText(event.target.value);
     };
-
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
@@ -72,9 +90,21 @@ export default function Homepage() {
         setSelectedFileUrl(null);
         setPostImage(null);
     };
+    useEffect(() => {
+        if (option) {
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [option]);
     const handleSubmitPost = () => {
         if (text || modalText || selectedFile) {
             const newPost: Post = {
+                userID: userID,
                 id: Date.now().toString(),
                 status: modalText || text,
                 imageUserName: avatar,
@@ -86,10 +116,8 @@ export default function Homepage() {
                 view: 0,
                 imageUrl: postImage || undefined,
             };
-
             console.log('Đang đăng bài:', newPost);
             setNewUserPost(newPost);
-
             setText('');
             setModalText('');
             setSelectedFile(null);
@@ -104,7 +132,7 @@ export default function Homepage() {
     const isHomePage = location.pathname.slice(1);
     return (
         <div className={styles.HomepageContainer}>
-            <Navbar  onPostClick={() => {}}/>
+            <Navbar  onPostClick={handlePostClick}/>
             <div className={styles.Homepage}>
                 <div className={styles.Homepage__header}>
                     <div
@@ -129,9 +157,9 @@ export default function Homepage() {
                                 onChange={handleChange}
                                 placeholder="What is happening"
                             />
-                            <div className={styles.Homepage__every}>
+                            <div className={styles.Homepage__every} onClick={handleOption}>
                                 <img src={earth} alt="Earth" />
-                                <p className={styles.Homepage__every__reply}>Everyone can reply</p>
+                                <p className={styles.Homepage__every__reply}>{replyOption}</p> 
                             </div>
                             <div className={styles.Homepage__toolbar}>
                                 <ul className={styles.Homepage__list}>
@@ -153,6 +181,12 @@ export default function Homepage() {
                                 </ul>
                                 <button className={styles.Homepage__btn} onClick={handleSubmitPost}>Post</button>
                             </div>
+                            {option &&(
+                                <div ref={OptionRef} className={styles.Homepage__options}>
+                                <p className={styles.Homepage__every__reply} onClick={() => handleUserIDChange(true)}>Everyone can reply</p>
+                                <p className={styles.Homepage__every__reply} onClick={() => handleUserIDChange(false)}>Account to follow</p>
+                                </div>
+                               )} 
                         </div>
                     </div>
                     {selectedFileUrl && (
@@ -201,6 +235,7 @@ export default function Homepage() {
                         </div>
                     )}
                     <Article 
+                    
                     id='123'
                     name='asd'
                     userEmail ='sadfwec'    

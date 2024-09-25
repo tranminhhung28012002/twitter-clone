@@ -55,7 +55,7 @@ textarea {
             }
         }
         &:hover{  
-                background-color: #2e2e2e;
+                background-color: #2e2e2e71;
         }
     }
     &__content{
@@ -101,8 +101,20 @@ textarea {
         &__icon{
             width: 10px;
             height: 10px;
+        } 
+        &__reply{
+            margin-bottom: 5px;
         }
-      
+    }
+    &__options{
+        cursor: pointer;
+        position: absolute;
+        top: 150px;
+        left: 100px;
+        padding: 12px;
+        border-radius: 20px;
+        background: #fff;
+        color: #222222;
     }
     &__avatar{
         margin-top: 10px;
